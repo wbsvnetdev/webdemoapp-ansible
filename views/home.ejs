@@ -1,0 +1,378 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Treeptik Starship</title>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css' rel='stylesheet' />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Favicons -->
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm bg-color text-color">
+      <div class="d-flex justify-content-start" >
+        <h5 class="my-0 mr-md-auto font-weight-normal">Treeptik Starship</h5>
+        <svg class="bi bi-geo" width="1.6em" height="1.6em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 4a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path d="M7.5 4h1v9a.5.5 0 01-1 0V4z"/>
+          <path fill-rule="evenodd" d="M6.489 12.095a.5.5 0 01-.383.594c-.565.123-1.003.292-1.286.472-.302.192-.32.321-.32.339 0 .013.005.085.146.21.14.124.372.26.701.382.655.246 1.593.408 2.653.408s1.998-.162 2.653-.408c.329-.123.56-.258.701-.382.14-.125.146-.197.146-.21 0-.018-.018-.147-.32-.339-.283-.18-.721-.35-1.286-.472a.5.5 0 11.212-.977c.63.137 1.193.34 1.61.606.4.253.784.645.784 1.182 0 .402-.219.724-.483.958-.264.235-.618.423-1.013.57-.793.298-1.855.472-3.004.472s-2.21-.174-3.004-.471c-.395-.148-.749-.336-1.013-.571-.264-.234-.483-.556-.483-.958 0-.537.384-.929.783-1.182.418-.266.98-.47 1.611-.606a.5.5 0 01.595.383z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      
+
+      <nav class="my-2 my-md-0 mr-md-3">
+        <!-- <a class="p-2 text-color" href="#">Home</a> -->
+        
+      </nav>
+
+</div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1>Devops at the speed of light <img src="images/stars.png" height="30px" width="30px" alt=""></h1>
+  <p class="lead"> Simple nodejs app built for demo purpose. It should display the @ip address of the client making the http request and its geolocation on a map</p>
+ 
+  <hr>
+
+  <div class="d-flex justify-content-center my-3 text-info">
+        <div class="px-3">
+            <svg class="bi bi-alarm" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A6 6 0 108 3a6 6 0 000 12zm0 1A7 7 0 108 2a7 7 0 000 14z" clip-rule="evenodd"/>
+            <path fill-rule="evenodd" d="M8 4.5a.5.5 0 01.5.5v4a.5.5 0 01-.053.224l-1.5 3a.5.5 0 11-.894-.448L7.5 8.882V5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+            <path d="M.86 5.387A2.5 2.5 0 114.387 1.86 8.035 8.035 0 00.86 5.387zM11.613 1.86a2.5 2.5 0 113.527 3.527 8.035 8.035 0 00-3.527-3.527z"/>
+            <path fill-rule="evenodd" d="M11.646 14.146a.5.5 0 01.708 0l1 1a.5.5 0 01-.708.708l-1-1a.5.5 0 010-.708zm-7.292 0a.5.5 0 00-.708 0l-1 1a.5.5 0 00.708.708l1-1a.5.5 0 000-.708zM5.5.5A.5.5 0 016 0h4a.5.5 0 010 1H6a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+            <path d="M7 1h2v2H7V1z"/>
+          </svg>
+        </div>
+        <div>
+          <h5><%= date %></h5>
+          <h2><div id="MyClockDisplay" onload="showTime()"></div></h2>
+        </div>
+    
+  </div>
+  
+
+
+  <% if (envApp == "PRODUCTION") { %>
+  <div class="alert alert-success" role="alert">
+    <svg class="bi bi-check-circle" width="2.5em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L8 9.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M8 2.5A5.5 5.5 0 1013.5 8a.5.5 0 011 0 6.5 6.5 0 11-3.25-5.63.5.5 0 11-.5.865A5.472 5.472 0 008 2.5z" clip-rule="evenodd"/>
+    </svg>
+    <br>
+    <h2><%= envApp %></h2>
+  </div>
+  <% } else if (envApp == "STAGING"){ %>
+    <div class=" alert alert-warning" role="alert">
+      <h2>STAGING</h2>
+    </div>
+    <% } else { %>
+      <div class="alert alert-danger" role="alert">
+        <h2>UNKNOWN ENVIRONMENT</h2>
+      </div>
+      <% } %>
+      <div class="d-flex justify-content-center">
+        <div class="mx-2">
+          <svg class="bi bi-file-earmark-code" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 1h5v1H4a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6h1v7a2 2 0 01-2 2H4a2 2 0 01-2-2V3a2 2 0 012-2z"/>
+            <path d="M9 4.5V1l5 5h-3.5A1.5 1.5 0 019 4.5z"/>
+            <path fill-rule="evenodd" d="M8.646 6.646a.5.5 0 01.708 0l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708L10.293 9 8.646 7.354a.5.5 0 010-.708zm-1.292 0a.5.5 0 00-.708 0l-2 2a.5.5 0 000 .708l2 2a.5.5 0 00.708-.708L5.707 9l1.647-1.646a.5.5 0 000-.708z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+         <div>
+          <h4>version: 1.1</h4>
+         </div>
+        
+      </div>
+          <div class="card_ansible">
+            <img src="images/ansible.png" alt="John" style="width:100%">
+          
+            <p class="title">Deployed with Ansible</p>
+          </div>
+  <hr>
+  <div class="d-flex justify-content-around py-4">
+    <div class="d-flex flex-column px-2" > 
+        <div>
+          <svg class="bi bi-geo-alt" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+          </svg> <h4><%= ip %></h4>
+        </div>
+        <div>
+          <img src="<%= country_flag %>" alt="">
+        </div>
+        <div class="py-4">
+          
+          <div class="alert alert-info" role="alert">
+            <h5><%= city %></h5>
+          </div>
+        </div>
+      
+       
+        
+      
+    </div>
+
+    
+    <div id="map" onload="initMap()"style="height:420px; width:450px">
+    </div>
+
+  </div>
+  <hr>
+</div>
+
+
+
+
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    
+    <div class="card border-color" style="width: 18rem;">
+      <img src="images/stars.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h3 class="card-title">Journey to the cloud</h3>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Cost optimization</a></li>
+          <li><a class="text-muted" href="#">Auto Scaling</a></li>
+          <li><a class="text-muted" href="#">High Availability</a></li>
+          <li><a class="text-muted" href="#">Cloud assessments</a></li>
+          <li><a class="text-muted" href="#">Migration</a></li>
+          </ul>
+          <div class="card-body d-flex flex-column">
+            <a class="btn btn-flat mt-auto" href="https://www.treeptik.com/">Learn more</a>
+
+          </div>
+     
+      </div>
+    </div>
+
+    <div class="card border-color" style="width: 18rem;">
+      <img src="images/stars.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h3 class="card-title">Move to Devops</h3>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Cost optimization</a></li>
+          <li><a class="text-muted" href="#">Auto Scaling</a></li>
+          <li><a class="text-muted" href="#">High Availability</a></li>
+          <li><a class="text-muted" href="#">Cloud assessments</a></li>
+          <li><a class="text-muted" href="#">Migration</a></li>
+          </ul>
+          <div class="card-body d-flex flex-column">
+            <a class="btn btn-flat mt-auto" href="https://www.treeptik.com/">Learn more</a>
+
+          </div>
+
+      </div>
+    </div>
+
+    <div class="card border-color" style="width: 18rem;">
+      <img src="images/stars.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h3 class="card-title">Stack your containers</h3>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Governance</a></li>
+          <li><a class="text-muted" href="#">Orchestration</a></li>
+          <li><a class="text-muted" href="#">Monitoring</a></li>
+          <li><a class="text-muted" href="#">CI/CD</a></li>
+          </ul>
+
+          <div class="card-body d-flex flex-column">
+            <a class="btn btn-flat mt-auto" href="https://www.treeptik.com/">Learn more</a>
+
+          </div>
+
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+        <small class="d-block mb-3 text-muted">&copy; 2019</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Cool stuff</a></li>
+       
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Resource</a></li>
+       
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Team</a></li>
+          <li><a class="text-muted" href="#">Locations</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
+        
+        <script>
+              function showTime(){
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM";
+            
+            if(h == 0){
+                h = 12;
+            }
+            
+            if(h > 12){
+                h = h - 12;
+                session = "PM";
+            }
+            
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            
+            var time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+            
+            setTimeout(showTime, 1000);
+            
+          }
+
+          showTime();
+        </script>
+
+<script>
+               function initMap(){
+                      mapboxgl.accessToken = '<%= apiMapbox %>';
+                    var map = new mapboxgl.Map({
+                    container: 'map', // container id
+                    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                    center: [<%= longitude %>, <%= latitude %>], // starting position [lng, lat]
+                    zoom: 4 // starting zoom
+                    });
+
+                      var size = 200;
+ 
+                            // implementation of CustomLayerInterface to draw a pulsing dot icon on the map
+                            // see https://docs.mapbox.com/mapbox-gl-js/api/#customlayerinterface for more info
+                            var pulsingDot = {
+                            width: size,
+                            height: size,
+                            data: new Uint8Array(size * size * 4),
+                            
+                            // get rendering context for the map canvas when layer is added to the map
+                            onAdd: function() {
+                            var canvas = document.createElement('canvas');
+                            canvas.width = this.width;
+                            canvas.height = this.height;
+                            this.context = canvas.getContext('2d');
+                            },
+                            
+                            // called once before every frame where the icon will be used
+                            render: function() {
+                            var duration = 1000;
+                            var t = (performance.now() % duration) / duration;
+                            
+                            var radius = (size / 2) * 0.3;
+                            var outerRadius = (size / 2) * 0.7 * t + radius;
+                            var context = this.context;
+                            
+                            // draw outer circle
+                            context.clearRect(0, 0, this.width, this.height);
+                            context.beginPath();
+                            context.arc(
+                            this.width / 2,
+                            this.height / 2,
+                            outerRadius,
+                            0,
+                            Math.PI * 2
+                            );
+                            context.fillStyle = 'rgba(255, 200, 200,' + (1 - t) + ')';
+                            context.fill();
+                            
+                            // draw inner circle
+                            context.beginPath();
+                            context.arc(
+                            this.width / 2,
+                            this.height / 2,
+                            radius,
+                            0,
+                            Math.PI * 2
+                            );
+                            context.fillStyle = 'rgba(255, 100, 100, 1)';
+                            context.strokeStyle = 'white';
+                            context.lineWidth = 2 + 4 * (1 - t);
+                            context.fill();
+                            context.stroke();
+                            
+                            // update this image's data with data from the canvas
+                            this.data = context.getImageData(
+                            0,
+                            0,
+                            this.width,
+                            this.height
+                            ).data;
+                            
+                            // continuously repaint the map, resulting in the smooth animation of the dot
+                            map.triggerRepaint();
+                            
+                            // return `true` to let the map know that the image was updated
+                            return true;
+                            }
+                            };
+                            
+                            map.on('load', function() {
+                            map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
+                            
+                            map.addSource('points', {
+                            'type': 'geojson',
+                            'data': {
+                            'type': 'FeatureCollection',
+                            'features': [
+                            {
+                            'type': 'Feature',
+                            'geometry': {
+                            'type': 'Point',
+                            'coordinates': [<%= longitude %>,<%= latitude %>]
+                            }
+                            }
+                            ]
+                            }
+                            });
+                            map.addLayer({
+                            'id': 'points',
+                            'type': 'symbol',
+                            'source': 'points',
+                            'layout': {
+                            'icon-image': 'pulsing-dot'
+                            }
+                            });
+                            });
+                                            }
+                initMap()
+</script>
+
+       
+          
+</body>
+</html>
